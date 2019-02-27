@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Link,
+  NavLink,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -16,17 +16,15 @@ import './main.css';
 class main extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          react-progressive-image
-        </header>
-        <Router>
+      <Router>
+        <div>
+          <header className="App App-header">
+            <NavLink className="link" exact to="/">Basic</NavLink>
+            <NavLink className="link" to='/loading'>With loading</NavLink>
+            <NavLink className="link" to="/delay">With delay</NavLink>
+            <NavLink className="link" to="/srcset">With srcSet</NavLink>
+          </header>
           <div>
-            <Link className="link" to="/">Basic</Link>{' '}
-            <Link className="link" to={{pathname: '/loading'}}>With loading</Link>{' '}
-            <Link className="link" to="/delay">With delay</Link>{' '}
-            <Link className="link" to="/srcset">With srcSet</Link>{' '}
-            
             <Switch>
               <Route path="/" exact component={Basic} />
               <Route path="/loading" component={Loading} />
@@ -35,8 +33,8 @@ class main extends Component {
               <Route render={() => <h1>Page not found</h1>} />
             </Switch>
           </div>
-        </Router>
-      </div>
+        </div>
+      </Router>
     );
   }
 }
